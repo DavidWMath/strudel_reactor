@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+/* Stop button CSS */
+.Stop_Button{
+  background-color: White;  
+  color: red;
+  border-color:black;
+  border-style: solid;
+  border-width: 2px;
+  padding:10px 20px;
+  cursor: pointer;
+  border-radius: 20%;
+  margin: 10px;
+}
+
+.Stop_Button:hover{
+  background-color: pink;
+}
+
+.Stop_Button:active{
+  transform: translateY(2px);
+  background-color: red;
+  color: black;
+}
+ /* Stop button CSS */
+
+ .button_container{
+    display: flex;
+    justify-content: space-around; 
+    align-items: center; 
+ }
