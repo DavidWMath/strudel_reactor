@@ -39,24 +39,23 @@
 
 /* Stop button CSS */
 .Stop_Button{
-  background-color: White;  
-  color: red;
+  background-color: lightblue;  
+  color: black;
   border-color:black;
   border-style: solid;
   border-width: 2px;
-  padding:10px 20px;
   cursor: pointer;
   border-radius: 20%;
   margin: 10px;
 }
 
 .Stop_Button:hover{
-  background-color: pink;
+  background-color: darkturquoise;
 }
 
 .Stop_Button:active{
-  transform: translateY(2px);
-  background-color: red;
+  transform: translateY(4px);
+  background-color: lightseagreen;
   color: black;
 }
  /* Stop button CSS */
@@ -66,3 +65,25 @@
     justify-content: space-around; 
     align-items: center; 
  }
+
+ .button_container_2{
+  background-color: darkgray;
+ }
+
+ .TitleButtons{
+  background-color: grey;
+  text-align: center;
+
+ }
+
+ .PlayButton{
+  height: 20px;
+  width: 40px;
+  margin:auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  scale: 100%;
+ }
+
+ 

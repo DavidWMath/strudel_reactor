@@ -1,14 +1,18 @@
+import { Proc } from "../Functions/Proc";
+import { ProcAndPlay } from "../Functions/ProcAndPlay";
 
-function ProcButtons() {
+
+function ProcButtons({globalEditor, onProc, onProcAndPlay}) {
     return (
         <>
-        <div className="button_container">
-            <div className="btn-group"  role="group" aria-label="basic mixed styles example">
-                <button id="process" className="Stop_Button">Preprocess</button>
-                <button id="process_play" className="Stop_Button">Proc & Play</button>
-            </div>
+            <div className="button_container">
+                <div className="btn-group"  role="group" aria-label="basic mixed styles example">
+                    <button id="process" className="Stop_Button"  onClick={onProc}>Preprocess</button>
+                    <button id="process_play" className="Stop_Button" onClick={onProcAndPlay}>Proc And Play</button>
+                </div>
             </div>
         </>
+        
     );
 }
 

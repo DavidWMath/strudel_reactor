@@ -2,7 +2,7 @@ function DJ_Controls() {
     return (
         <>
         <div className="input-group mb-3">
-            <span className="input-group-text" id="cpm-label">SetCPM</span>
+            <span className="input-group-text" id="cpm-label">Set BPM</span>
             <input type="text" className="form-control" id="cpm_text_input" placeholder="120" aria-label="Username" defaultValue={120} aria-describedby="cpm_label"/>
         </div>
 
@@ -16,13 +16,13 @@ function DJ_Controls() {
             </label>
         </div>
         <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="d1"/>
+            <input className="form-check-input" type="checkbox" value="" id="d1" />
             <label className="form-check-label" htmlFor="d1">
                 d1
             </label>
         </div>
         <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="d2"/>
+            <input className="form-check-input" type="checkbox" value="" id="d2" />
             <label className="form-check-label" htmlFor="d2">
                 d2
             </label>
@@ -33,3 +33,4 @@ function DJ_Controls() {
 }
 
 export default DJ_Controls
+
