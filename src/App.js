@@ -120,7 +120,7 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <DJ_Controls/>
+                        <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor}/>
                     </div>
                 </div>
             </div>
