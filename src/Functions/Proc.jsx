@@ -1,7 +1,7 @@
+import { Preprocess } from "../utils/PreprocessLogic";
 import { ProcessText } from "./ProcessText";
 
-
-export function Proc(globalEditor, songText) {
+export function Proc({globalEditor, songText, volume}) {
     if (!songText){
         console.log("Proc and Play : No Song Text ");
     }
@@ -10,7 +10,8 @@ export function Proc(globalEditor, songText) {
         console.log("Proc and Paly : No global editor");
     }
 
-  let proc_text = songText;
-  let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText());
-  globalEditor.setCode(proc_text_replaced);
+    let outputText = Preprocess({ inputText: songText, volume });
+    let proc_text_replaced = outputText.replaceAll('<p1_Radio>', ProcessText());
+    globalEditor.setCode(proc_text_replaced);
 }
+

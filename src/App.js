@@ -16,6 +16,8 @@ import PreprocessTextArea from './Components/PreprocessTextArea';
 import { ProcAndPlay } from './Functions/ProcAndPlay';
 import { Proc } from './Functions/Proc';
 import { ProcessText } from './Functions/ProcessText';
+import { Preprocess, AddGainIfMissing} from './utils/PreprocessLogic';
+
 
 let globalEditor = null;
 
@@ -29,27 +31,41 @@ const handleD3Data = (event) => {
 
 export default function StrudelDemo() {
 
+    const hasRun =  useRef(false);
     const [songText, setSongText] = useState(stranger_tune)
+    const [volume, setVolume] = useState(1);
+    const[state, setState] = useState("stop");
 
     const handlePlay = () => {
+        let outputText = Preprocess({ inputText: songText, volume });
+        outputText = AddGainIfMissing(outputText, volume);
+        globalEditor.setCode(outputText);
         globalEditor.evaluate();
-    }
-
+    }   
     const handleStop = () => {
         globalEditor.stop();
     }
 
     const handleProc = () => {
-        Proc(globalEditor, songText);
+        Proc(globalEditor, songText, volume);
     }
 
     const handleProcAndPlay = () => {
-        ProcAndPlay(globalEditor, songText);
+        ProcAndPlay(globalEditor, songText, volume);
     }
 
 
+    useEffect(() => {
+        if (state === "play"){
+            handlePlay();
+        }
+    }, [volume])
 
-const hasRun = useRef(false);
+
+    
+
+
+
 
 //Runs Once on Setup, then never again
 useEffect(() => {
@@ -85,11 +101,12 @@ useEffect(() => {
                 },
             });
             
-        document.getElementById('proc').value = stranger_tune
+        document.getElementById('proc').value = songText;
+        globalEditor.setCode(songText);
         // SetupButtons()
         // Proc()
     }
-    globalEditor.setCode(songText);
+    
 }, [songText]);
 
 
@@ -109,7 +126,7 @@ return (
                                 <h1 className="TitleButtons"> DJ Controls</h1>
                                 <ProcButtons onProc={handleProc} onProcAndPlay={handleProcAndPlay}/>  
                                 <br />
-                                <PlayButtons onPlay={handlePlay} onStop={handleStop}     />
+                                <PlayButtons onPlay={() => { setState("play"); handlePlay()}} onStop={() => { setState("stop"); handleStop()}}   />
                             </div>
                         </nav>
                     </div>
@@ -120,7 +137,7 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor}/>
+                        <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor} VolumeChange={volume} onVolumeChange={(e) => setVolume(parseFloat(e.target.value))}/>
                     </div>
                 </div>
             </div>

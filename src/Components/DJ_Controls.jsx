@@ -1,4 +1,4 @@
-function DJ_Controls({songText, setSongText, globalEditor}) {
+function DJ_Controls({songText, setSongText, globalEditor, volume, onVolumeChange}) {
     //e is the event that react automatically passe to the function when spmething happens, like onchange of the BPM.
     //It means that I am able to access the element, aka the BPM input beign changed, and assinge it to a variable.
     function BPMChange(e){
@@ -25,7 +25,7 @@ function DJ_Controls({songText, setSongText, globalEditor}) {
         </div>
 
             <label htmlFor="range3" className="form-label">Volume</label>
-            <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range"></input>
+            <input type="range" className="form-range" min="0" max="2" step="0.1" id="volume_range" onMouseUp={onVolumeChange}></input>
 
         <div className="form-check">
             <input className="form-check-input" type="checkbox" value="" id="s1"/>
