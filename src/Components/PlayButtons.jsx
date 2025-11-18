@@ -3,8 +3,8 @@ function PlayButtons({onPlay, onStop}) {
         <>
             <div className="button_container">
                 <div className="btn-group"  role="group" aria-label="basic mixed styles example">
-                    <button id="play" className="Stop_Button" onClick={onPlay}>Play</button>
-                    <button id="stop" className="Stop_Button" onClick={onStop}>Stop</button>
+                    <button id="play" className="btn btn-success" onClick={onPlay}>Play</button>
+                    <button id="stop" className="btn btn-danger" onClick={onStop}>Stop</button>
                 </div>
             </div>
         </>

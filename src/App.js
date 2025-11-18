@@ -17,7 +17,7 @@ import { ProcAndPlay } from './Functions/ProcAndPlay';
 import { Proc } from './Functions/Proc';
 import { ProcessText } from './Functions/ProcessText';
 import { Preprocess, AddGainIfMissing} from './utils/PreprocessLogic';
-import { LocalSongControls } from "./Components/LocalSongControls";
+import  LocalSongControls from './Components/LocalSongControls';
 
 
 let globalEditor = null;
@@ -57,22 +57,16 @@ export default function StrudelDemo() {
     const handleProcAndPlay = () => {
         ProcAndPlay(globalEditor, songText, volume);
     }
-
-    const saveSongToLocal = () => {
-        localStorage.setItem("savedSongText", songText);
-        console.log("song saved locally");
+   
+    const handlePreprocess = () => {
+        const outputText = AddGainIfMissing(Preprocess({ inputText: songText, volume }), volume);
+        if (globalEditor != null) 
+            {
+                globalEditor.setCode(outputText);
+            }
+        console.log("Testing");
     };
-
-    const getLocalSong = () => {
-        const saved = localStorage.getItem("savedSongText");
-        if (saved) {
-            setSongText(saved);              
-            if (globalEditor) globalEditor.setCode(saved);  
-            console.log("loaded saved song");
-        } else {
-            console.log("no saved song found");
-        }
-    };
+    
 
     useEffect(() => {
         if (state === "play"){
@@ -138,18 +132,13 @@ return (
                         <nav>
                             <div className='button_container_2'>
                                 <h1 className="TitleButtons"> DJ Controls</h1>
-                                <ProcButtons onProc={handleProc} onProcAndPlay={handleProcAndPlay}/>  
+                                <ProcButtons onProc={handlePreprocess} onProcAndPlay={handlePreprocess}/>  
                                 <br />
+                                
                                 <PlayButtons onPlay={() => { setState("play"); handlePlay()}} onStop={() => { setState("stop"); handleStop()}}   />
-                                
-                                
-                                <button className="btn btn-primary" onClick={saveSongToLocal}>
-                                    Save Song Locally
-                                </button>
-                                <button className="btn btn-secondary" onClick={getLocalSong}>
-                                    Get Local Song
-                                </button>
-                            
+                                <div className="backgroundForControls">
+                                    <LocalSongControls songText={songText} setSongText={setSongText} globalEditor={globalEditor} />
+                                </div>
                             </div>
                         </nav>
                     </div>
@@ -160,8 +149,10 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor} VolumeChange={volume} onVolumeChange={(e) => setVolume(parseFloat(e.target.value))}/>
+                        
+                            <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor} VolumeChange={volume} onVolumeChange={(e) => setVolume(parseFloat(e.target.value))}/>
                     </div>
+                    
                 </div>
             </div>
             <canvas id="roll" className="Graphing"></canvas>

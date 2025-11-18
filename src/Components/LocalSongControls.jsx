@@ -21,10 +21,10 @@ export default function LocalSongControls({ songText, setSongText, globalEditor 
 
     return (
         <div className="local-song-controls">
-        <button className="btn btn-primary" onClick={saveSongToLocal}>
+        <button class="btn btn-warning" onClick={saveSongToLocal}>
             Save Song Locally
         </button>
-        <button className="btn btn-secondary" onClick={getLocalSong}>
+        <button className="btn btn-warning btn-outline-dark" onClick={getLocalSong}>
             Get Local Song
         </button>
         </div>

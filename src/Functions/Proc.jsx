@@ -1,4 +1,4 @@
-import { Preprocess } from "../utils/PreprocessLogic";
+import { Preprocess, AddGainIfMissing } from "../utils/PreprocessLogic";
 import { ProcessText } from "./ProcessText";
 
 export function Proc({globalEditor, songText, volume}) {
@@ -12,6 +12,8 @@ export function Proc({globalEditor, songText, volume}) {
 
     let outputText = Preprocess({ inputText: songText, volume });
     let proc_text_replaced = outputText.replaceAll('<p1_Radio>', ProcessText());
-    globalEditor.setCode(proc_text_replaced);
+    let processedWithGain = AddGainIfMissing(proc_text_replaced, volume);
+    console.log(processedWithGain);
+    globalEditor.setCode(processedWithGain);
 }
 
