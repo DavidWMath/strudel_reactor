@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Buttons And Controls
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Play Button
+The play button obviously plays the songText data, yet it also preprocesses the text data and adds gain where the gains are missing. This is so that the volume slider works effectively without 1. having to hard code over any of the tunes.js instruments and 2. so that there isnt a gain over all the instruments that make it super "Bassy" which i saw other student do.
 
-## Available Scripts
+# Stop Button
+Stops the music from playing, pretty basic
 
-In the project directory, you can run:
+# Save Song
+Saves the songtext using localstorage, and just storing the songText under "savedsongtext", 
 
-### `npm start`
+# Get Song
+Gets the songtext from the localstorage, by getting the songtext under what its attribute is saved under, in this case "savedsongtext'
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Volume Slider
+The volume slider works dynamically and adjusts either gain which was previously there by the volume, or by a (1*{volume}), allowing the slider to adjust all different levels of gain, even if the gain is implented after the preprocessing is done.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Set BPM
+set bpm grabs the BPM from the top and replaces it with the new bpm at the start, then sets the songTextBack. Now that I am writing this I realise it may not work for anything other then the specified BPM format that is given to it and I should've done another regex function that would search for "bpm{/yadayada}" and then replace the bpm based on what it finds.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Muting The Instruments
+The lengthiest one, created a new regex functino based on the one the tutor used, and bascailly grabbed the instrument titles based on it ending in a semicolon ":". Then i would loop through all the found instrumnets within the regex and either set them to their state of muted or unmuted, based on what I found within the array, using a empty usestate array. From their I would then generate the checkboxes for every single instrument within that array, once again based on whether or not the checkboxes needed to be checked or not. Finally I would then have a handleToggle function that would handle the toggleing of all my individual instrumental checkboxes, in which it copies over all the states of the checkboxes, either unchecked or checked, and then checks whether they are true, or false, and then changes the state of the checkbox based on newState[inst] of the instrument, either tickde or unticked, in which I then set the muted instruments to the useEffect ones that should be muted, and apply the muting of the instruments by sending it to the apply instrument mute functino, which just checks the lines and compares if they have an _ or not, and if so, replaces them, finally returning the newly modified insturmnets back to the songtext.
