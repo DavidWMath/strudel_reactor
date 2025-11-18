@@ -1,3 +1,16 @@
+# NOTES FOR START UP
+I know my file storage is messy, so here are some tips for how to startup once extracting it.
+
+Ensure you cd into: \wta1\strudel_reactor> BEFORE npm install.
+
+being in any other place wont work, this is also where you will run your npm start.
+
+Goodluck and have fun, here is the full cd if you get stuck:
+
+\Users\david\University\WT\wta1\strudel_reactor> npm install
+
+
+
 # Buttons And Controls
 
 # Play Button
