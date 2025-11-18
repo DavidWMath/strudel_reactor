@@ -18,15 +18,20 @@ export default function LocalSongControls({ songText, setSongText, globalEditor 
         }
     };
 
-
+ 
+    //gap-3 does a gap between buttons
     return (
         <div className="local-song-controls">
-        <button class="btn btn-warning" onClick={saveSongToLocal}>
-            Save Song Locally
-        </button>
-        <button className="btn btn-warning btn-outline-dark" onClick={getLocalSong}>
-            Get Local Song
-        </button>
+            <div className="local-song-controls d-flex justify-content-center gap-3 my-3"> 
+                <button class="btn btn-warning btn-2circle  btn-bordered" onClick={saveSongToLocal}>
+                    Save Song Locally
+                </button>
+                <button className="btn btn-warning btn-2circle  btn-bordered" onClick={getLocalSong}>
+                    Get Local Song
+                </button>
+            </div>
+            
+  
         </div>
     );
 

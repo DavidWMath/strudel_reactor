@@ -26,26 +26,6 @@ function DJ_Controls({songText, setSongText, globalEditor, volume, onVolumeChang
 
             <label htmlFor="range3" className="form-label">Volume</label>
             <input type="range" className="form-range" min="0" max="2" step="0.1" id="volume_range" onMouseUp={onVolumeChange}></input>
-
-        <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="s1"/>
-            <label className="form-check-label" htmlFor="s1">
-                s1
-            </label>
-        </div>
-        <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="d1" />
-            <label className="form-check-label" htmlFor="d1">
-                d1
-            </label>
-        </div>
-        <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="d2" />
-            <label className="form-check-label" htmlFor="d2">
-                d2
-            </label>
-        </div>
-
         </>
     );
 }
