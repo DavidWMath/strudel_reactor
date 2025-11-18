@@ -21,11 +21,9 @@ import  LocalSongControls from './Components/LocalSongControls';
 import InstrumentCheckboxes from './Components/InstrumentCheckBoxes';
 
 
+
 let globalEditor = null;
 
-const handleD3Data = (event) => {
-    console.log(event.detail);
-};
 
 export default function StrudelDemo() {
 
@@ -80,6 +78,7 @@ useEffect(() => {
     if (!hasRun.current) {
         document.addEventListener("d3Data", handleD3Data);
         console_monkey_patch();
+        hasRun.current = true; //I know i moved this last night, yet i dont see any reason to move it around, so am placing
         
 
         //Code copied from example: https://codeberg.org/uzu/strudel/src/branch/main/examples/codemirror-repl
@@ -111,7 +110,6 @@ useEffect(() => {
             
         document.getElementById('proc').value = songText;
         globalEditor.setCode(songText);
-        hasRun.current = true;  
         // SetupButtons()
         // Proc()
     }
