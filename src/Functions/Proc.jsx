@@ -17,4 +17,3 @@ export function Proc({globalEditor, songText, volume}) {
     globalEditor.setCode(processedWithGain);
 }
 
-//MAIN ARP HAS GAIN ADDED, FOR EXAMPLE IN VIDEO.
