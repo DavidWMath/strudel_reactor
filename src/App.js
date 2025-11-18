@@ -17,6 +17,7 @@ import { ProcAndPlay } from './Functions/ProcAndPlay';
 import { Proc } from './Functions/Proc';
 import { ProcessText } from './Functions/ProcessText';
 import { Preprocess, AddGainIfMissing} from './utils/PreprocessLogic';
+import { LocalSongControls } from "./Components/LocalSongControls";
 
 
 let globalEditor = null;
@@ -25,16 +26,18 @@ const handleD3Data = (event) => {
     console.log(event.detail);
 };
 
-
-
-
-
 export default function StrudelDemo() {
 
     const hasRun =  useRef(false);
-    const [songText, setSongText] = useState(stranger_tune)
     const [volume, setVolume] = useState(1);
+
+    //Run This First
     const[state, setState] = useState("stop");
+
+    const [songText, setSongText] = useState(() => {
+        const saved = localStorage.getItem("savedSongText");
+        return saved || stranger_tune; //return either saved if it is saved or the tune origially loaded.
+    });
 
     const handlePlay = () => {
         let outputText = Preprocess({ inputText: songText, volume });
@@ -42,6 +45,7 @@ export default function StrudelDemo() {
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     }   
+
     const handleStop = () => {
         globalEditor.stop();
     }
@@ -54,6 +58,21 @@ export default function StrudelDemo() {
         ProcAndPlay(globalEditor, songText, volume);
     }
 
+    const saveSongToLocal = () => {
+        localStorage.setItem("savedSongText", songText);
+        console.log("song saved locally");
+    };
+
+    const getLocalSong = () => {
+        const saved = localStorage.getItem("savedSongText");
+        if (saved) {
+            setSongText(saved);              
+            if (globalEditor) globalEditor.setCode(saved);  
+            console.log("loaded saved song");
+        } else {
+            console.log("no saved song found");
+        }
+    };
 
     useEffect(() => {
         if (state === "play"){
@@ -61,19 +80,13 @@ export default function StrudelDemo() {
         }
     }, [volume])
 
-
-    
-
-
-
-
 //Runs Once on Setup, then never again
 useEffect(() => {
-
     if (!hasRun.current) {
         document.addEventListener("d3Data", handleD3Data);
         console_monkey_patch();
-        hasRun.current = true;
+        
+
         //Code copied from example: https://codeberg.org/uzu/strudel/src/branch/main/examples/codemirror-repl
             //init canvas
             const canvas = document.getElementById('roll');
@@ -103,11 +116,12 @@ useEffect(() => {
             
         document.getElementById('proc').value = songText;
         globalEditor.setCode(songText);
+        hasRun.current = true;  
         // SetupButtons()
         // Proc()
     }
     
-}, [songText]);
+}, []); 
 
 
 return (
@@ -117,7 +131,7 @@ return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <PreprocessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
+                        <PreprocessTextArea value={songText} onChange={(newValue) => setSongText(newValue)}/>
                     </div>
                     <div className="col-md-4">
 
@@ -127,6 +141,15 @@ return (
                                 <ProcButtons onProc={handleProc} onProcAndPlay={handleProcAndPlay}/>  
                                 <br />
                                 <PlayButtons onPlay={() => { setState("play"); handlePlay()}} onStop={() => { setState("stop"); handleStop()}}   />
+                                
+                                
+                                <button className="btn btn-primary" onClick={saveSongToLocal}>
+                                    Save Song Locally
+                                </button>
+                                <button className="btn btn-secondary" onClick={getLocalSong}>
+                                    Get Local Song
+                                </button>
+                            
                             </div>
                         </nav>
                     </div>
