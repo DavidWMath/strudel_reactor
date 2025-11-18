@@ -4,6 +4,7 @@ const logArray = [];
 
 export default function console_monkey_patch() {
 
+    //Alright lets to this!
     //If react multicalls this, do nothing
     if (originalLog) return;
 
