@@ -18,6 +18,7 @@ import { Proc } from './Functions/Proc';
 import { ProcessText } from './Functions/ProcessText';
 import { Preprocess, AddGainIfMissing} from './utils/PreprocessLogic';
 import  LocalSongControls from './Components/LocalSongControls';
+import InstrumentCheckboxes from './Components/InstrumentCheckBoxes';
 
 
 let globalEditor = null;
@@ -149,9 +150,14 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        
-                            <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor} VolumeChange={volume} onVolumeChange={(e) => setVolume(parseFloat(e.target.value))}/>
+                        <div className="HeadingForControls" class="text-center">
+                            <h2>Control Below!</h2>
+                        </div>
+                        <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor} VolumeChange={volume} onVolumeChange={(e) => setVolume(parseFloat(e.target.value))}/>
+                        <InstrumentCheckboxes inputText={songText} onChange={(updatedText) => setSongText(updatedText)} />
+
                     </div>
+
                     
                 </div>
             </div>
