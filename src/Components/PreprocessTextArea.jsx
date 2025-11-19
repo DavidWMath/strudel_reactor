@@ -2,8 +2,8 @@
                     
 function PreprocessTextArea({value, onChange}) {
     return (
-        <div className="Border">
-            <label htmlFor="proc" className="ChangingBGLightGrey CenterText">Song Text!  :</label>
+        <div className="CenterText Bold">
+            <label htmlFor="proc" className="CenterText ">Modify Your Song Text Below!</label>
             <textarea className="form-control" rows="15" value={value} onChange={(e) => onChange(e.target.value)} id="proc" ></textarea>
         </div>
     );

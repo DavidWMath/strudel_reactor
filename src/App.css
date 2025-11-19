@@ -37,7 +37,6 @@
   }
 }
 
-/* Stop button CSS */
 .Stop_Button{
   background-color: lightblue;  
   color: black;
@@ -58,25 +57,29 @@
   background-color: lightseagreen;
   color: black;
 }
- /* Stop button CSS */
 
- .button_container{
+.button_container{
     display: flex;
     justify-content: space-around; 
     align-items: center; 
- }
+}
 
- .button_container_2{
+.DarkGreyBg{
   background-color: darkgray;
- }
+}
 
- .TitleButtons{
+.TitleButtons{
   background-color: grey;
   text-align: center;
+  border-bottom: none;
+  margin: 0;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
 
- }
+}
 
- .PlayButton{
+.PlayButton{
   height: 20px;
   width: 40px;
   margin:auto;
@@ -84,7 +87,7 @@
   margin-left: auto;
   margin-right: auto;
   scale: 100%;
- }
+}
 
  
 .btn-circle {
@@ -129,11 +132,43 @@
 }
 
 
-.ChangingBGDarkGrey{
-  background-color: grey;
+.Background-Colour{ 
+  border: black;
+}
+
+.Background-Colour-White{
+  background-color: white;
 }
 
 
 .CenterText{
   text-align: center;
+  
+}
+
+.Bold{
+  font-weight: bold;
+}
+
+.borders{
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+}
+
+.RemoveOverHeadPadding{
+  padding-top: 0;
+}
+
+.QuickAdjustment{
+  border: 2px solid black;
+  border-top: none; 
+  padding: 10px;
+}
+
+.JustBottomBorder{
+  border: 2px solid black;
+  border-top: none; 
+  border-left: none;
+  border-right: none;
 }

@@ -124,25 +124,29 @@ useEffect(() => {
 
 return (
     <div>
-        <h2 className="CenterText ChangingBGDarkGrey">Strudel Demo</h2>
-        <main>
-            <div className="container-fluid ChangingBGLightGrey">
-                <div className="row ChangingBGLightGrey">
-                    <div className="col-md-8 ChangingBGLightGrey" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+        <h2 className="CenterText "> David's Strudel-Demo!</h2>
+        <main className="">
+            <div className="container-fluid ">
+                <div className="row ">
+                    <div className="col-md-8 Background-Colour-White borders" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <PreprocessTextArea value={songText} onChange={(newValue) => setSongText(newValue)}/>
                     </div>
-                    <div className="col-md-4 ChangingBGLightGrey">
+                    <div className="col-md-4">
 
                         <nav>
                             <div className='button_container_2'>
                                 <h1 className="TitleButtons"> DJ Controls</h1>
-                                <br />
-                                
-                                <PlayButtons onPlay={() => { setState("play"); handlePlay()}} onStop={() => { setState("stop"); handleStop()}}   />
-                                <div className="">
-                                    <LocalSongControls songText={songText} setSongText={setSongText} globalEditor={globalEditor} />
+                                <div className='QuickAdjustment DarkGreyBg'>
+                                    <PlayButtons onPlay={() => { setState("play"); handlePlay()}} onStop={() => { setState("stop"); handleStop()}}   />
+                                    <div className="">
+                                        <LocalSongControls songText={songText} setSongText={setSongText} globalEditor={globalEditor} />
+                                    </div>
                                 </div>
-                                <BarChart/>
+                                <br ></br>
+                                <div className="borders DarkGreyBg">
+                                    <BarChart/>
+                                </div>
+
                             </div>
                         </nav>
                     </div>
@@ -154,7 +158,7 @@ return (
                     </div>
                     <div className="col-md-4">
                         <div className="HeadingForControls" class="text-center">
-                            <h2 className="ChangingBGDarkGrey">Control Below!</h2>
+                            <h2 className="">Control Below!</h2>
                         </div>
                         <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor} VolumeChange={volume} onVolumeChange={(e) => setVolume(parseFloat(e.target.value))}/>
                         <InstrumentCheckboxes inputText={songText} onChange={(updatedText) => setSongText(updatedText)} />

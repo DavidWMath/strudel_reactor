@@ -3,7 +3,6 @@ import { useEffect} from "react";
 import { subscribe, unsubscribe } from '../console-monkey-patch'; //ALLOWS ME TO GET THE DATA
 
 
-
 function GetD3Data(data){
     let EmptyArr = []
     for(let i = 0; i < data.length; i++){
@@ -59,7 +58,7 @@ export function BarChart(){
                 .attr('y', d => yScale(d))
                 .attr('width', xScale.bandwidth())
                 .attr('height', d => height - yScale(d))
-                .attr('fill', 'steelblue');
+                .attr('fill', 'purple');
 
             svg.append('g')
                 .call(d3.axisLeft(yScale));
@@ -75,10 +74,11 @@ export function BarChart(){
         
     }, []); //runs once
 
+    //can use it in the stlye, but className is so much easier :)
      return (
-        <div style={{ marginTop: "20px" }}>
-            <h3>CutOff Bar Chart</h3>
-            <svg style={{ width: "100%", height: "300px" }}></svg>
+        <div style={{}}> 
+            <h3 className="RemoveOverHeadPadding CenterText backgroundForControls JustBottomBorder">D3 Bar Chart</h3>
+            <svg className="JustBottomBorder" style={{ width: "100%", height: "300px" }}></svg>
         </div>
     );
 }
