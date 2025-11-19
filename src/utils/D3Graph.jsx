@@ -1,5 +1,5 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-import { useEffect, useRef, useState } from "react";
+import { useEffect} from "react";
 import { subscribe, unsubscribe } from '../console-monkey-patch'; //ALLOWS ME TO GET THE DATA
 
 
@@ -7,7 +7,7 @@ import { subscribe, unsubscribe } from '../console-monkey-patch'; //ALLOWS ME TO
 function GetD3Data(data){
     let EmptyArr = []
     for(let i = 0; i < data.length; i++){
-        const match = data[i].match(/cutoff:([0-9.]+)/);
+        const match = data[i].match(/postgain:([0-9.]+)/);
         let match2 = null;
         if(match){
             match2 = parseFloat(match[1]);
