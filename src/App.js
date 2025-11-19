@@ -128,7 +128,7 @@ return (
         <main className="">
             <div className="container-fluid ">
                 <div className="row ">
-                    <div className="col-md-8 Background-Colour-White borders" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <div className="col-md-8 DarkGreyBg borders" style={{ maxHeight: '80vh', overflowY: 'auto' }}>
                         <PreprocessTextArea value={songText} onChange={(newValue) => setSongText(newValue)}/>
                     </div>
                     <div className="col-md-4">
@@ -151,24 +151,44 @@ return (
                         </nav>
                     </div>
                 </div>
+                
                 <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <div className="col-md-8 borders blackbg" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <div id="editor" />
                         <div id="output" />
                     </div>
-                    <div className="col-md-4">
-                        <div className="HeadingForControls" class="text-center">
-                            <h2 className="">Control Below!</h2>
+                    <br></br>
+                    <br></br>
+                    
+                    <div className="col-md-4"> 
+                        <br>
+                        </br>
+                        <div className="AllButBottomBorder text-center greyBG">
+                            <h2 className=""  style={{ margin: 0 }}>Change The BPM!</h2>
                         </div>
-                        <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor} VolumeChange={volume} onVolumeChange={(e) => setVolume(parseFloat(e.target.value))}/>
-                        <InstrumentCheckboxes inputText={songText} onChange={(updatedText) => setSongText(updatedText)} />
+                        <div className='AllButTopBorder ChangingBGLightGrey '>
+                            
+                            <DJ_Controls songText={songText} setSongText={setSongText} globalEditor={globalEditor} VolumeChange={volume} onVolumeChange={(e) => setVolume(parseFloat(e.target.value))}/>
+                            
+                            <h2 className='CenterText TopBorderOnly greyBG' style={{ margin: 0 }}>Mute Instruments</h2>
+                            <InstrumentCheckboxes inputText={songText} onChange={(updatedText) => setSongText(updatedText)} />
+
+                        </div>
 
                     </div>
 
                     
                 </div>
             </div>
-            <canvas id="roll" className="Graphing"></canvas>
+            <br>
+            </br>
+            <div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
+                    <h1 className="CanvasHeading">Canvas!!</h1>
+                    <canvas id="roll" className="Graphing borders "></canvas>
+                </div>
+            </div>
+ 
         </main >
     </div >
 );

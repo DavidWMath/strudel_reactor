@@ -78,7 +78,7 @@ export function BarChart(){
      return (
         <div style={{}}> 
             <h3 className="RemoveOverHeadPadding CenterText backgroundForControls JustBottomBorder">D3 Bar Chart</h3>
-            <svg className="JustBottomBorder" style={{ width: "100%", height: "300px" }}></svg>
+            <svg style={{ width: "100%", height: "300px" }}></svg>
         </div>
     );
 }

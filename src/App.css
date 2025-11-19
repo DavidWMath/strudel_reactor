@@ -144,10 +144,12 @@
 .CenterText{
   text-align: center;
   
+  
 }
 
 .Bold{
   font-weight: bold;
+  text-align: center;
 }
 
 .borders{
@@ -171,4 +173,45 @@
   border-top: none; 
   border-left: none;
   border-right: none;
+}
+
+.AllButBottomBorder{
+  border: 2px solid black;
+  border-bottom: none;  
+
+}
+
+.AllButTopBorder{
+  border: 2px solid black;
+  border-top: none;  
+  border-width: 2px;
+  border-style: solid;
+}
+
+.AllButLeftRightBorder{
+  border: 2px solid black;
+  border-left: none;  
+  border-right: none;  
+}
+
+.TopBorderOnly{
+  border: 2px solid black;
+  border-left: none;  
+  border-right: none;
+  border-bottom: none;  
+}
+
+
+
+.greyBG{
+  background-color: grey;
+}
+
+.blackbg{
+  background-color: #222222;
+}
+
+.CanvasHeading{
+  display: 'block';
+  margin: '0 auto';
 }

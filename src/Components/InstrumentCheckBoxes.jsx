@@ -53,7 +53,7 @@ export default function InstrumentCheckboxes({ inputText, onChange }) {
     //Like what the tutor has done.
     //the key is what the instrument name is essentially, like hashmaps which we have jsut finished an assingment on in
     return (
-        <div>
+        <div className="TopBorderOnly" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
             
         {instruments.map(instr => (
             <div key={instr}> 

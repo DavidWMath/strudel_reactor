@@ -19,13 +19,14 @@ function DJ_Controls({songText, setSongText, globalEditor, volume, onVolumeChang
 
     return (
         <>
-        <div className="input-group mb-3">
+        <div className="input-group mb-3 ">
             <span className="input-group-text" id="cpm-label">Set BPM</span>
             <input type="text" onChange={BPMChange} className="form-control" id="cpm_text_input" placeholder="120" aria-label="Username" defaultValue={120} aria-describedby="cpm_label"/>
         </div>
-
-            <label htmlForm="range3" className="form-label">Volume</label>
+        <div className="">
+            <h2 htmlForm="range3" className="form-label CenterText AllButLeftRightBorder greyBG">Volume Slider</h2>
             <input type="range" className="form-range" min="0" max="2" step="0.1" id="volume_range" onMouseUp={onVolumeChange}></input>
+        </div>
         </>
     );
 }
