@@ -19,6 +19,7 @@ import { ProcessText } from './Functions/ProcessText';
 import { Preprocess, AddGainIfMissing} from './utils/PreprocessLogic';
 import  LocalSongControls from './Components/LocalSongControls';
 import InstrumentCheckboxes from './Components/InstrumentCheckBoxes';
+import { BarChart } from './utils/D3Graph';
 
 
 
@@ -52,6 +53,10 @@ export default function StrudelDemo() {
     const handleProc = () => {
         Proc(globalEditor, songText, volume);
     }
+
+    const handleD3Data = (event) => {
+        console.log(event.detail);
+    };
 
     const handleProcAndPlay = () => {
         ProcAndPlay(globalEditor, songText, volume);
@@ -137,6 +142,7 @@ return (
                                 <div className="">
                                     <LocalSongControls songText={songText} setSongText={setSongText} globalEditor={globalEditor} />
                                 </div>
+                                <BarChart/>
                             </div>
                         </nav>
                     </div>
